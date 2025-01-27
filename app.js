@@ -2,8 +2,19 @@
 const inputAmigo = document.getElementById('amigo');
 const listaAmigos = document.getElementById('listaAmigos');
 const cajaResultado = document.getElementById('resultado');
-
+const añadirAmigo = document.querySelector('.button-add');
 let amigos = [];
+let valorInicial = ''
+
+inputAmigo.addEventListener('keyup', (e)=>{
+    if (inputAmigo.value !== valorInicial){
+        añadirAmigo.classList.add('key-up');
+    }
+    else{
+        añadirAmigo.classList.remove('key-up');
+    }
+})
+
 
 let agregarAmigo = () => {
     let valorAmigo = inputAmigo.value.toLowerCase().trim();
@@ -16,6 +27,7 @@ let agregarAmigo = () => {
     else{
         amigos.push(valorAmigo);
         inputAmigo.value = '';
+        añadirAmigo.classList.remove('key-up');
         actualizarAmigos();
     }
 
